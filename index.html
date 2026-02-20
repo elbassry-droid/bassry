@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bassry Store - بصري ستور</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Cairo', sans-serif;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      @media print {
+        @page { 
+          margin: 0mm; 
+        } 
+        
+        #root > aside, 
+        header, 
+        .no-print,
+        button {
+          display: none !important;
+        }
+
+        body, html {
+          background: #fff !important;
+          width: 100%;
+        }
+
+        /* وضع طباعة الإيصال - محسّن للطابعات الحرارية */
+        .print-mode-receipt #root > main { display: none !important; }
+        .print-mode-receipt .receipt-modal-container {
+          position: absolute !important;
+          top: 0 !important;
+          right: 0 !important;
+          width: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          background: white !important;
+          visibility: visible !important;
+        }
+
+        .print-mode-receipt .receipt-modal-container * {
+            color: black !important;
+            background: white !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            border-color: black !important;
+            border-radius: 0 !important; /* الطابعات الحرارية لا تدعم الحواف الدائرية بشكل جيد */
+        }
+
+        /* تحسين مظهر الإيصال للورق الضيق */
+        .thermal-receipt {
+          width: 58mm !important; /* العرض القياسي لورق الكاشير الصغير */
+          max-width: 58mm !important;
+          padding: 2mm !important;
+          border: 1px dashed black !important;
+          margin: 0 auto !important;
+        }
+
+        .thermal-receipt h2 { font-size: 16px !important; margin-bottom: 2mm !important; border-bottom: 2px solid black; }
+        .thermal-receipt h3 { font-size: 14px !important; }
+        .thermal-receipt p, .thermal-receipt span { font-size: 12px !important; line-height: 1.2; }
+        .thermal-receipt .divider { border-top: 1px dashed black; margin: 2mm 0; }
+        .thermal-receipt img { display: none !important; } /* إخفاء الشعار لضمان سرعة ووضوح الطباعة */
+
+        /* وضع طباعة كارت الهوية */
+        .print-mode-idcard #root > main { display: none !important; }
+        .print-mode-idcard .id-card-modal-container {
+          display: block !important;
+          position: static !important;
+          width: 100% !important;
+        }
+        
+        .print-mode-finance .finance-report-container {
+            display: block !important;
+            visibility: visible !important;
+            background: white !important;
+            padding: 20px !important;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "path": "https://esm.sh/path@^0.12.7",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "url": "https://esm.sh/url@^0.11.4",
+    "@neondatabase/serverless": "https://esm.sh/@neondatabase/serverless@^1.0.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-50 text-gray-900">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

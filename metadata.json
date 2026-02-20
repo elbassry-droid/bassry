@@ -1,0 +1,7 @@
+{
+  "name": "Bassry Store",
+  "description": "نظام متكامل لإدارة الطلاب، الدرجات، الماليات، وتنبيهات واتساب لـ Bassry Store.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
